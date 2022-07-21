@@ -5,6 +5,9 @@ import java.awt.event.ActionListener;
 
 public class CalculatorInterface implements ActionListener {
 
+    double num1 = 0;
+    double num2 = 0;
+    char operation;
     private final JFrame frame;
     private final JPanel panel1,panel2,panel3;
     private final JButton[] noButtons;
@@ -31,7 +34,7 @@ public class CalculatorInterface implements ActionListener {
 
     ImageIcon image;
 
-    public CalculatorInterface(){
+    public CalculatorInterface() {
         image = new ImageIcon("Image/calculator.png");
         frame = new JFrame("Calculator");
         frame.setLayout(new FlowLayout());
@@ -89,9 +92,9 @@ public class CalculatorInterface implements ActionListener {
         funcButtons[7]= clear;
 
         for(int i = 0; i < 8;i++){
-            funcButtons[i].addActionListener(this);
             funcButtons[i].setFocusable(false);
             funcButtons[i].setFont(myFont);
+            funcButtons[i].addActionListener(this);
         }
 //        delete.setFont(new Font(Font.SANS_SERIF,Font.BOLD,20));
 //        clear.setFont(new Font(Font.SANS_SERIF,Font.BOLD,20));
@@ -184,6 +187,76 @@ public class CalculatorInterface implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
+       for(int i = 0; i<10;i++){
+           if(e.getSource() == noButtons[i]){
+               calculationBar.setText(calculationBar.getText().concat(noButtons[i].getText()));
+           }
+       }
+       if(e.getSource() == addition){
+           operation = '+';
+           int length = calculationBar.getText().length();
+           num1 = Double.parseDouble(calculationBar.getText().substring(0,length));
+           calculationBar.setText("");
+           System.out.println(num1);
+       }
+        else if(e.getSource() == multiplication){
+           operation = '*';
+            int length = calculationBar.getText().length();
+            num1 = Double.parseDouble(calculationBar.getText().substring(0,length));
+//            calculationBar.setText(calculationBar.getText() + " * ");
+           calculationBar.setText("");
+
+        }
+        else if(e.getSource() == subtraction){
+           operation = '-';
+            int length = calculationBar.getText().length();
+            num1 = Double.parseDouble(calculationBar.getText().substring(0,length));
+//            calculationBar.setText(calculationBar.getText() + " - ");
+           calculationBar.setText("");
+        }
+       else if(e.getSource() == division){
+           operation = '/';
+           int length = calculationBar.getText().length();
+           num1 = Double.parseDouble(calculationBar.getText().substring(0,length));
+//            calculationBar.setText(calculationBar.getText() + " / ");
+           calculationBar.setText("");
+       }
+       else if(e.getSource() == equality){
+           int length = calculationBar.getText().length();
+           num2 = Double.parseDouble(calculationBar.getText().substring(0,length));
+           switch (operation){
+               case '+':
+                   calculationBar.setText(String.valueOf(num1+num2));
+                   break;
+               case '-' :
+                   calculationBar.setText(String.valueOf(num1-num2));
+                   break;
+               case '*':
+                   calculationBar.setText(String.valueOf(num1*num2));
+                   break;
+               case '/':
+                   calculationBar.setText(String.valueOf(num1/num2));
+           }
+       }
+       else if(e.getSource() == decimal){
+           if(!calculationBar.getText().contains("."))
+           calculationBar.setText(calculationBar.getText().concat("."));
+       }
+       else if(e.getSource() == clear){
+           calculationBar.setText("");
+           num1 = 0;
+           num2 = 0;
+       }
+       else if (e.getSource() == delete) {
+       String delString = "";
+       int length = calculationBar.getText().length();
+           for (int i = 0; i < length - 1; i++) {
+               delString+= calculationBar.getText().charAt(i);
+           }
+           calculationBar.setText(delString);
+       }
+        System.out.println("action performed");
 
     }
 }
