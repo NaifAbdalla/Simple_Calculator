@@ -11,19 +11,6 @@ public class CalculatorInterface implements ActionListener {
     private final JFrame frame;
     private final JPanel panel1,panel2,panel3;
     private final JButton[] noButtons;
-
-//    Replaced by using Array
-//    private JButton no0;
-//    private JButton no1;
-//    private JButton no2;
-//    private JButton no3;
-//    private JButton no4;
-//    private JButton no5;
-//    private JButton no6;
-//    private JButton no7;
-//    private JButton no8;
-//    private JButton no9;
-
     private final JButton[] funcButtons;
     private final JButton multiplication,addition,subtraction,equality,division,decimal;
 
@@ -55,17 +42,6 @@ public class CalculatorInterface implements ActionListener {
             noButtons[i].addActionListener(this);
         }
 
-//        Redundant code eliminated by using Array and for loop
-//        no0 = new JButton("0");
-//        no1 = new JButton("1");
-//        no2 = new JButton("2");
-//        no3 = new JButton("3");
-//        no4 = new JButton("4");
-//        no5 = new JButton("5");
-//        no6 = new JButton("6");
-//        no7 = new JButton("7");
-//        no8 = new JButton("8");
-//        no9 = new JButton("9");
 
         decimal = new JButton(".");
         multiplication = new JButton("x");
@@ -96,48 +72,6 @@ public class CalculatorInterface implements ActionListener {
             funcButtons[i].setFont(myFont);
             funcButtons[i].addActionListener(this);
         }
-//        delete.setFont(new Font(Font.SANS_SERIF,Font.BOLD,20));
-//        clear.setFont(new Font(Font.SANS_SERIF,Font.BOLD,20));
-
-//        delete.setFocusable(false);
-//        clear.setFocusable(false);
-//
-//        delete.addActionListener(this);
-//        clear.addActionListener(this);
-
-//        multiplication.setFont(new Font(Font.SANS_SERIF,Font.BOLD,20));
-//        subtraction.setFont(new Font(Font.SANS_SERIF,Font.BOLD,25));
-//        equality.setFont(new Font(Font.SANS_SERIF,Font.BOLD,25));
-//        division.setFont(new Font(Font.SANS_SERIF,Font.BOLD,20));
-//        decimal.setFont(new Font(Font.SANS_SERIF,Font.BOLD,25));
-//        addition.setFont(new Font(Font.SANS_SERIF,Font.BOLD,20));
-
-//        multiplication.addActionListener(this);
-//        subtraction.addActionListener(this);
-//        equality.addActionListener(this);
-//        division.addActionListener(this);
-//        decimal.addActionListener(this);
-//        addition.addActionListener(this);
-//
-//        multiplication.setFocusable(false);
-//        subtraction.setFocusable(false);
-//        equality.setFocusable(false);
-//        division.setFocusable(false);
-//        decimal.setFocusable(false);
-//        addition.setFocusable(false);
-
-//        Redundant code eliminated by using Array and for loop
-//        no0.setFont(new Font(Font.SANS_SERIF,Font.BOLD,20));
-//        no1.setFont(new Font(Font.SANS_SERIF,Font.BOLD,20));
-//        no2.setFont(new Font(Font.SANS_SERIF,Font.BOLD,20));
-//        no3.setFont(new Font(Font.SANS_SERIF,Font.BOLD,20));
-//        no4.setFont(new Font(Font.SANS_SERIF,Font.BOLD,20));
-//        no5.setFont(new Font(Font.SANS_SERIF,Font.BOLD,20));
-//        no6.setFont(new Font(Font.SANS_SERIF,Font.BOLD,20));
-//        no7.setFont(new Font(Font.SANS_SERIF,Font.BOLD,20));
-//        no9.setFont(new Font(Font.SANS_SERIF,Font.BOLD,20));
-//        no8.setFont(new Font(Font.SANS_SERIF,Font.BOLD,20));
-
 
         panel2.add(noButtons[7]);
         panel2.add(noButtons[8]);
@@ -204,7 +138,6 @@ public class CalculatorInterface implements ActionListener {
            operation = '*';
             int length = calculationBar.getText().length();
             num1 = Double.parseDouble(calculationBar.getText().substring(0,length));
-//            calculationBar.setText(calculationBar.getText() + " * ");
            calculationBar.setText("");
 
         }
@@ -212,14 +145,12 @@ public class CalculatorInterface implements ActionListener {
            operation = '-';
             int length = calculationBar.getText().length();
             num1 = Double.parseDouble(calculationBar.getText().substring(0,length));
-//            calculationBar.setText(calculationBar.getText() + " - ");
            calculationBar.setText("");
         }
        else if(e.getSource() == division){
            operation = '/';
            int length = calculationBar.getText().length();
            num1 = Double.parseDouble(calculationBar.getText().substring(0,length));
-//            calculationBar.setText(calculationBar.getText() + " / ");
            calculationBar.setText("");
        }
        else if(e.getSource() == equality){
